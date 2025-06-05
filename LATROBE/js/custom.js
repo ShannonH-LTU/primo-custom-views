@@ -4,7 +4,7 @@
   
   var app = angular.module('viewCustom', ['angularLoad']);
   
-  console.log('LATROBE view version 0.1.20');
+  console.log('LATROBE view version 0.1.22');
   //console.log('includes: LibChat, Browzine, Talis (v2), guided tours');
   
   /* -------------------------------------------
@@ -479,7 +479,7 @@
       $scope.updateTour();
     }
 
-    $scope.startTour = function() {
+    $scope.startTour = function(initialStep = 0) {
       // start the tour (removing any active ones)
       if($scope.driverObj && $scope.tourSteps) {
         //console.log('GT - START TOUR: '+$scope.tourLabel);
@@ -505,7 +505,7 @@
 
         // start the tour
         $scope.driverObj.setSteps($scope.tourSteps);
-        $scope.driverObj.drive();
+        $scope.driverObj.drive(initialStep);
       }
     }
 
@@ -2324,8 +2324,12 @@
 
           // check whether the tour should be launched automatically (via a URL param)
           if(/startTour=1/.test(url)) {
+            var urlParams = new URLSearchParams(url);
+            var initialStep = parseInt(urlParams.get('tourStep'));
+            if(isNaN(initialStep)) initialStep = 0;
+
             $timeout(function(e) {
-              $scope.startTour();
+              $scope.startTour(initialStep);
             }, 500);
           }
         }
@@ -2476,4 +2480,34 @@
       '</a>'
   });
   */
+
+
+  /* -------------------------------------------
+  / Gallery collection - Author & Date
+  ------------------------------------------- */
+  app.component('prmGalleryItemAfter', {
+      bindings: {
+        parentCtrl: '<'
+      },
+      controller: function () {
+        var $ctrl = this;
+        $ctrl.$onInit = function () {
+          try {
+            $ctrl.author = $ctrl.parentCtrl.item.pnx.addata.au[0];
+          } catch (e) {
+            $ctrl.author = '';
+          }
+          try {
+            $ctrl.date = $ctrl.parentCtrl.item.pnx.display.creationdate[0];
+          } catch (e) {
+            $ctrl.date ='';
+          }
+          $ctrl.hasDate = !!$ctrl.date;
+          $ctrl.hasAuthor = !!$ctrl.author;
+        };
+      },
+      template: '<div class="item-date" ng-if="$ctrl.hasDate">{{$ctrl.date}}</div>'+
+                '<div class="item-author" ng-if="$ctrl.hasAuthor">{{$ctrl.author}}</div>',
+      });
+  // ------------------------------------------- end Gallery collection - Author & Date
 })();

@@ -1,3 +1,18 @@
+/* ----- SANDBOX INDICATOR ----- 
+body:before {
+  content: 'Sandbox';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  background: deeppink;
+  color: #fff;
+  z-index: 999;
+  padding: 5px 10px;
+  border-radius: 0 0 10px 0;
+}
+*/
 /* ----- VARS ---- */
 :root {
   /* base branding */
@@ -79,6 +94,9 @@ html, body {
   font-weight: 400;
   font-size: 1rem;
 }
+body:has(prm-stand-alone-login) {
+  background: #555;
+}
 h2, .h2, h3, .h3, md-card-title-text {
   font-family: knockout;
   font-feature-settings: "ss02";
@@ -105,7 +123,7 @@ md-radio-group:focus {
   outline: 3px solid #75b6fc !important;
   outline-offset: 1px;
 }
-.md-select-menu-container.report-problem-cat-drop {
+.md-select-menu-container, .md-select-menu-container.report-problem-cat-drop {
   z-index: 201;
 }
 md-input-container.md-input-focused label:not(.md-no-float), md-input-container.md-input-has-placeholder label:not(.md-no-float), 
@@ -997,6 +1015,41 @@ prm-newspapers-home > md-content.layout-row {
   position: absolute;
 }
 
+/* --- content warning */
+prm-brief-result span[data-field-selector="lds47"] {
+  background: #fef3f3;
+  display: block;
+  padding: 5px 10px 5px 45px;
+  border-style: solid;
+  border-width: 1px 0;
+  border-color: #d87f7d;
+  margin-top: 8px;
+  position: relative;
+}
+prm-brief-result span[data-field-selector="lds47"]::before {
+  content: '!';
+  position: absolute;
+  border: 2px solid #e2231b;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-weight: 900;
+  text-align: center;
+  left: 10px;
+  color: #e2231b;
+  font-size: 17px;
+}
+prm-service-details .layout-row:has(span[translate-attr-title="fulldisplay.lds47"]) .item-details-element {
+  background: #fef3f3;
+  display: block;
+  padding: 5px 10px;
+  border-style: solid;
+  border-width: 1px 0;
+  border-color: #d87f7d;
+  margin-bottom: 5px;
+}
+/* --- end content warning */
+
 /* ----- END BODY CONTENT ----- */
 
 /* ----- DIALOG PANELS ----- */
@@ -1243,12 +1296,12 @@ md-card.login-dialog md-dialog-actions button.md-button:not([disabled]):hover, m
   text-decoration: underline;
 }
 
-md-dialog.login-dialog button.button-confirm {
+.login-dialog button.button-confirm {
   background: #e2231b;
   color: #fff !important;
   border: 1px solid #e2231b !important;
 }
-md-dialog.login-dialog button.button-confirm:hover, md-dialog.login-dialog button.button-confirm:focus {
+.login-dialog button.button-confirm:hover, .login-dialog button.button-confirm:focus {
   background: #b51c16 !important;
   border-color: #b51c16 !important;
 }
@@ -1666,3 +1719,143 @@ prm-databases-categorize > div:has(> .driver-active-element) {
 :not(body):not(html):has(> .driver-active-element) {
   overflow: inherit !important;
 }
+/* ----- END TWEAKS FOR GUIDED TOUR ----- */
+
+
+/* ----- PRIMO COLLECTION GALLERY ----- */
+prm-gallery-item-after:empty {
+  display: none;
+}
+
+prm-collection-navigation-breadcrumbs-item > a {
+  color: #fff !important;
+}
+prm-collection-navigation-breadcrumbs-item > a:hover,
+prm-collection-navigation-breadcrumbs-item > a:focus {
+  background: var(--ltu-dark-red) !important;
+}
+
+prm-topbar .top-nav-bar {  /* line 217 in custom1.css */
+  background: var(--ltu-dark-grey) !important;
+}
+
+prm-gallery-item .collection-element .item-title {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-family: dm sans;
+  font-size: 1em;
+  font-weight: 500 !important;
+}
+prm-gallery-item .collection-element .item-displayLine:empty {
+  display: none;
+}
+
+prm-gallery-collection .collection-header {
+  font-family: dm sans;
+}
+
+prm-collection-gallery-header .collection-header-inner {
+  /*background-color: #666;*/
+  /*background-color: #e2231b;*/
+  background-color: var(--ltu-dark-red);
+}
+
+prm-collection-gallery-header .result-item-actions prm-save-to-favorites-button .md-icon-button {
+  background: #fff3;
+  color: #fff;
+}
+prm-collection-gallery-header .result-item-actions prm-save-to-favorites-button .md-icon-button:hover:not([disabled]),
+prm-collection-gallery-header .result-item-actions prm-save-to-favorites-button .md-icon-button:focus:not([disabled]) {
+  background: #fff !important;
+  color: #187474 !important;
+}
+
+prm-collection-gallery prm-collection-search .toolbar-select-input,
+prm-collection-gallery prm-collection-search .search-input {
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+prm-collection-gallery prm-collection-search .search-input {
+  padding: 3px 0 2px;
+}
+prm-collection-gallery prm-collection-search .toolbar-select-input .md-select-value {
+  padding: 5px 10px;
+}
+prm-collection-gallery prm-collection-search .search-input input.search-within-input {
+  font-size: 1.2rem;
+  border-width: 0 0 2px;
+  border-color: transparent;
+  padding-right: 32px;
+  padding-left: 10px;
+}
+prm-collection-gallery prm-collection-search .search-input .clear-button {
+  margin-top: -2px;
+  margin-right: 4px;
+}
+
+prm-collection-gallery prm-gallery-item .collection-element,
+prm-collection-gallery prm-gallery-collection .collection-folder {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #ccc !important;
+}
+prm-collection-gallery prm-gallery-item .collection-element {
+  padding: 15px
+}
+prm-collection-gallery prm-gallery-item .collection-element:hover,
+prm-collection-gallery prm-gallery-item .collection-element:focus {
+  box-shadow: 0px 0px 1px 1px var(--ltu-red) !important;
+}
+prm-collection-gallery prm-gallery-collection .collection-folder a:hover,
+prm-collection-gallery prm-gallery-collection .collection-folder a:focus {
+  box-shadow: none;
+}
+prm-collection-gallery prm-gallery-item .collection-element .item-info * {
+  background: transparent;
+}
+prm-collection-gallery prm-gallery-collection .collection-folder .item-title * {
+  background: #fff;
+}
+prm-gallery-collection .collection-folder .collection-header span {
+  box-shadow: .4em 0 0 0 #fff,-.4em 0 0 0 #fff;
+}
+prm-gallery-collection .collection-folder .collection-overlay::before {
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid var(--ltu-red);
+}
+prm-gallery-collection .collection-folder .collection-overlay::after {
+  background: none;
+} 
+prm-gallery-items-list .md-button.button-confirm {
+  color: var(--ltu-dark-red);
+}
+prm-gallery-items-list .md-button.button-confirm:hover:not([disabled]) {
+  color: #fff;
+  background: var(--ltu-dark-red);
+}
+
+prm-gallery-item-after {
+  padding: 20px 15px;
+  display: block;
+  margin-top: -30px;
+  pointer-events: none;
+}   
+prm-gallery-item-after div {
+  margin-bottom: -40px;
+  margin-top: -20px;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.is-grid-view prm-gallery-item .collection-element {
+  padding: 15px;
+}
+prm-gallery-item:has(.item-author) .collection-element .item-title,
+prm-gallery-item:has(.item-date) .collection-element .item-title {
+ padding-bottom: 30px;
+}
+/* ----- END PRIMO COLLECTION GALLERY ----- */
