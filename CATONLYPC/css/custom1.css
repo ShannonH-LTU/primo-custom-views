@@ -105,7 +105,7 @@ md-radio-group:focus {
   outline: 3px solid #75b6fc !important;
   outline-offset: 1px;
 }
-.md-select-menu-container.report-problem-cat-drop {
+.md-select-menu-container, .md-select-menu-container.report-problem-cat-drop {
   z-index: 201;
 }
 md-input-container.md-input-focused label:not(.md-no-float), md-input-container.md-input-has-placeholder label:not(.md-no-float), 
