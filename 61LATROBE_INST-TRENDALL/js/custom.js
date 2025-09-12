@@ -384,7 +384,7 @@
     bindings: { parentCtrl: '<' },
     controller: 'GuidedTourController',
     template: 
-    //  '<div class="header-alert"><p><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg> Proquest platforms, including eBook Central, will be offline for maintenance from midday to 8 pm on Sunday 10 August.</p></div>'+
+      //'<div class="header-alert"><p>Proquest platforms, including eBook Central, will be offline for maintenance from midday to 8 pm on Sunday 10 August.</p></div>'+
       '<a id="tour_button" href="" ng-show="tourLabel" ng-click="startTour()" ng-class="[{\'animate\':animateButton, \'show\':tourLabel}, tourClass]">'+
         '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="margin: 0 5px 0 0;font-size: 1.1em;max-width: 18px;"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 32H64C46.3 32 32 46.3 32 64v64c0 17.7 14.3 32 32 32H441.4c4.2 0 8.3-1.7 11.3-4.7l48-48c6.2-6.2 6.2-16.4 0-22.6l-48-48c-3-3-7.1-4.7-11.3-4.7H288c0-17.7-14.3-32-32-32s-32 14.3-32 32zM480 256c0-17.7-14.3-32-32-32H288V192H224v32H70.6c-4.2 0-8.3 1.7-11.3 4.7l-48 48c-6.2 6.2-6.2 16.4 0 22.6l48 48c3 3 7.1 4.7 11.3 4.7H448c17.7 0 32-14.3 32-32V256zM288 480V384H224v96c0 17.7 14.3 32 32 32s32-14.3 32-32z"></path></svg>'+
         '<span ng-bind-html="tourLabel"></span>'+
@@ -537,7 +537,7 @@
         
         if(/query/.test(url)) {
           // results view
-          $scope.tourLabel = 'Tour the <strong>Library collections</strong> search results page';
+          $scope.tourLabel = 'Tour the <strong>Trendall collection</strong> search results page';
 
           var advSearchUrl = url.replace('&mode=simple', '').replace('&mode=advanced', '').replace('&startTour=1', '') + '&mode=advanced';
 
@@ -545,8 +545,8 @@
             {
               element: "prm-brief-result-container",
               popover: {
-                title: "Library collections search results",
-                description: "The results of your library collections search are listed on the page. Select an item from the results to see its details.",
+                title: "Trendall collection search results",
+                description: "The results of your Trendall collection search are listed on the page. Select an item from the results to see its details.",
                 showButtons: ["next", "close"],
                 side: "bottom",
                 align: "center"
@@ -570,32 +570,16 @@
                 align: "center"
               }
             }, {
-              element: isMobileView || isSmallView ? "#mobilePersonalization" : "#personalizationBtn",
-              popover: {
-                title: "Personalise your results",
-                description: "You can specify your preferred disciplines to have relevant items listed higher in the search results.",
-                side: "right",
-                align: "center"
-              }
-            }, {
               element: isMobileView || isSmallView ? "#sidebar-trigger" : "prm-facet:has(.sidebar-section)",
               popover: {
                 title: "Narrow your results",
-                description: "Apply filters (such as 'Peer-reviewed' and 'Resource type') to narrow down your search. You can also 'Search beyond our collection' to include results from other libraries.",
+                description: "Apply filters (such as 'Subject' and 'Resource type') to narrow down your search.",
                 side: "top",
                 align: isMobileView ? "end" : "start"
               }
             }, 
             // FOLLOWING ELEMENTS ARE ON THE PAGE
             {
-              element: "prm-newspapers-spotlight",
-              popover: {
-                title: "Search newspaper articles",
-                description: "A standard library search doesn't include newspaper articles. If you would like to search newspapers, you can select this link.",
-                side: "top",
-                align: "center",
-              }
-            }, {
               element: ".search-wrapper",
               popover: {
                 title: "Search form",
@@ -607,7 +591,7 @@
               element: ".s-lch-widget-float-btn",
               popover: {
                 title: "Need help?",
-                description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your library search.",
+                description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your search.",
                 side: "bottom",
                 align: "center",
                 onNextClick: function(element, step, options) {
@@ -633,7 +617,7 @@
               element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='report.Title'])" : "#reportProblem",
               popover: {
                 title: "Ran into an issue?",
-                description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the library. ",
+                description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the Library. ",
                 side: "right",
                 align: "end",
                 onPrevClick: function(element, step, options) {
@@ -675,7 +659,7 @@
               element: "#logoImage",
               popover: {
                 title: "Library website",
-                description: "To return to the library website, select the La Trobe University logo.",
+                description: "To return to the Library website, select the La Trobe University logo.",
                 side: "bottom",
                 align: "start",
                 popoverClass: 'ltu-tour ltu-end-tour',
@@ -698,25 +682,25 @@
               }
             }]
         } else {
-          $scope.tourLabel = "Tour the <strong>Library collections</strong> search page";
+          $scope.tourLabel = "Tour the <strong>Trendall collection</strong> search page";
 
           $scope.tourSteps = [
             { 
               popover: { 
-                  title: "Welcome to the Library collections search", 
-                  description: "This search allows you to find any resource within the library's many collections.",
+                  title: "Welcome to the Trendall collection search", 
+                  description: "This search allows you to find resources within the Trendall collection.",
                   showButtons: ["next", "close"],
                   popoverClass: 'ltu-tour ltu-begin-tour'
               }
             },
             // FOLLOWING ELEMENT IS DIFFERENT DEPENDING ON THE VIEW
             {
-              element: isMobileView ? "prm-topbar button.mobile-menu-button" : "#more-links-button",
+              element: isMobileView ? "prm-topbar button.mobile-menu-button" : "#mainMenu",
               popover: {
                 title: "Check the menu",
-                description: "<p>The main menu lets you change the type of search you're performing (e.g. search all collections, databases, or newspaper articles) as well as allowing you to request items from another library.</p><p>Select the '3-dot' menu item to view the full main menu.</p><p>Note that when you're in 'mobile' view, some options that are usually on the page (e.g. the 'Advanced search') are within this menu instead.</p>",
+                description: "<p>The main menu lets you start a new search of the Trendall collection and you can also view information about the Trendall Centre.</p>"+(isMobileView ? "<p>Select the '3-dot' menu item to view all main menu items.</p>" : "")+"<p><strong>Note:</strong> When you're in 'mobile' view, some options that are usually on the page (e.g. the 'Advanced search') are within this menu instead"+(isMobileView ? "" : ", which you view by selecting the '3-dot' menu item")+".</p>",
                 side: "bottom",
-                align: "end",
+                align: "start",
                 popoverClass: 'ltu-tour ltu-tour-wide'
               }
             }, {
@@ -724,14 +708,6 @@
               popover: {
                 title: "Search form",
                 description: "<p>Enter the term that you want to search for. Use the drop-downs to apply filters to your search.</p><p>You can also 'Search by voice' in supported web browsers (Chrome or Edge are recommended).</p>",
-                side: "bottom",
-                align: "center"
-              }
-            }, {
-              element: "md-select[aria-label^='Select search scope']",
-              popover: {
-                title: "Online or physical?",
-                description: "<p>If you would like to restrict your search to only online resources or only physical ones, select the appropriate option in this drop-down.</p>",
                 side: "bottom",
                 align: "center"
               }
@@ -744,7 +720,7 @@
                 align: "start"
               }
             }, {
-              element: "prm-pre-filters > div > md-input-container:nth-child(2) md-select",
+              element: "prm-pre-filters > div > md-input-container:nth-child(3) md-select",
               popover: {
                 title: "Search field",
                 description: "<p>If you want to search only within a specific field, you can specify it in this drop-down. Leave it as 'anywhere in the record' to broaden your search.</p>",
@@ -794,10 +770,10 @@
                 }
               }
             }, {
-              element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='eshelf.signin.title'])" : "prm-user-area-expandable",
+              element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='nui.menu.librarycard'])" : "prm-user-area-expandable",
               popover: {
-                title: "Your library account",
-                description: "Sign in to access your library account, where you can view the status of any loans or requests for library resources.",
+                title: "Your Library account",
+                description: "Sign in to access your Library account, where you can view the status of any loans or requests for Library resources.",
                 side: "bottom",
                 align: isMobileView ? "start" : "end",
                 onNextClick: function(element, step, options) {
@@ -847,7 +823,7 @@
               element: ".s-lch-widget-float-btn",
               popover: {
                 title: "Need help?",
-                description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your library search.",
+                description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your search.",
                 side: "bottom",
                 align: "center",
                 onNextClick: function(element, step, options) {
@@ -873,7 +849,7 @@
               element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='report.Title'])" : "#reportProblem",
               popover: {
                 title: "Ran into an issue?",
-                description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the library. ",
+                description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the Library. ",
                 side: "right",
                 align: "end",
                 onPrevClick: function(element, step, options) {
@@ -915,7 +891,7 @@
               element: "#logoImage",
               popover: {
                 title: "Library website",
-                description: "To return to the library website, select the La Trobe University logo.",
+                description: "To return to the Library website, select the La Trobe University logo.",
                 side: "bottom",
                 align: "start",
                 onPrevClick: function(element, step, options) {
@@ -1278,7 +1254,7 @@
                 align: "center"
               }
             }, {
-              element: isMobileView || isSmallView ? "button[aria-label='Narrow my results']" : "prm-facet",
+              element: isMobileView || isSmallView ? "button[aria-label='Refine my results']" : "prm-facet",
               popover: {
                 title: "Narrow your results",
                 description: "Apply filters (such as 'Date' and 'Subject') to narrow down your search.",
@@ -1642,7 +1618,7 @@
               element: ".s-lch-widget-float-btn",
               popover: {
                 title: "Need help?",
-                description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your library search.",
+                description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your search.",
                 side: "bottom",
                 align: "center",
                 onNextClick: function(element, step, options) {
@@ -1668,7 +1644,7 @@
               element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='report.Title'])" : "#reportProblem",
               popover: {
                 title: "Ran into an issue?",
-                description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the library. ",
+                description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the Library. ",
                 side: "right",
                 align: "end",
                 onPrevClick: function(element, step, options) {
@@ -1710,7 +1686,7 @@
               element: "#logoImage",
               popover: {
                 title: "Library website",
-                description: "To return to the library website, select the La Trobe University logo.",
+                description: "To return to the Library website, select the La Trobe University logo.",
                 side: "bottom",
                 align: "start",
                 popoverClass: 'ltu-tour ltu-end-tour',
@@ -1755,7 +1731,7 @@
             element: ".s-lch-widget-float-btn",
             popover: {
               title: "Need help?",
-              description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your library search.",
+              description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your search.",
               side: "bottom",
               align: "center",
               onNextClick: function(element, step, options) {
@@ -1781,7 +1757,7 @@
             element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='report.Title'])" : "#reportProblem",
             popover: {
               title: "Ran into an issue?",
-              description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the library. ",
+              description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the Library. ",
               side: "right",
               align: "end",
               onPrevClick: function(element, step, options) {
@@ -1823,7 +1799,7 @@
             element: "#logoImage",
             popover: {
               title: "Library website",
-              description: "To return to the library website, select the La Trobe University logo.",
+              description: "To return to the Library website, select the La Trobe University logo.",
               side: "bottom",
               align: "start",
               onPrevClick: function(element, step, options) {
@@ -1938,19 +1914,7 @@
             ])
           }
 
-          /*
-          // if the full details are displayed over the main content, move (& clone) the tour button
-          if(document.querySelector("prm-full-view-page") == null && document.querySelector("prm-full-view #tour_button") == null) {
-            var fullView = document.querySelector("prm-full-view");
-            var tourBtn = document.querySelector("#tour_button");
-            if(tourBtn) {
-              var clone = tourBtn.cloneNode(true);
-              //clone.addEventListener("click", $scope.startTour);
-              clone.classList.add('is-clone');
-              if(fullView) fullView.appendChild(clone);
-            }
-          }
-          */
+          
       } else if(/\/account\?/.test(url)) {
         // my account
         
@@ -1993,10 +1957,10 @@
         }, 
         // FOLLOWING ELEMENT IS EITHER IN MAIN MENU OR IN THE ACCOUNT MENU
         {
-          element: isMobileView ? "prm-authentication button[aria-label='Sign out']" : "#signOutButton",
+          element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='eshelf.signout.title.link'])" : "#signOutButton",
           popover: {
             title: "Signing out",
-            description: "If you are on a library (or shared) computer, don't forget to sign out once you have finished your work. You can find the sign out button in either the user menu or via the '3-dot' main menu.",
+            description: "If you are on a Library (or shared) computer, don't forget to sign out once you have finished your work. You can find the sign out button in either the user menu or via the '3-dot' main menu.",
             side: "bottom",
             align: "end",
             onPrevClick: function(element, step, options) {
@@ -2028,7 +1992,7 @@
           element: isMobileView ? "button.mobile-menu-button" : "#mainMenu",
           popover: {
             title: "Main menu",
-            description: "Use this menu to start a search for any library resources or view help documentation.",
+            description: "Use this menu to start a search for any resources in the Trendall collection or view help documentation.",
             side: "bottom",
             align: "center",
             onPrevClick: function(element, step, options) {
@@ -2047,7 +2011,7 @@
           element: ".s-lch-widget-float-btn",
           popover: {
             title: "Need help?",
-            description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your library search.",
+            description: "Use the chat feature to talk with a librarian, or use the 'Help' option in the main menu to access resources and information to help you with your search.",
             side: "bottom",
             align: "center",
             onNextClick: function(element, step, options) {
@@ -2073,7 +2037,7 @@
           element: isMobileView ? "prm-main-menu[menu-type='full'] button:has([translate='report.Title'])" : "#reportProblem",
           popover: {
             title: "Ran into an issue?",
-            description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the library.",
+            description: "If you have encountered a problem with a search, resource, or logging in, select 'Report a problem' to report it to the Library.",
             side: "right",
             align: "end",
             onPrevClick: function(element, step, options) {
@@ -2115,7 +2079,7 @@
           element: "#logoImage",
           popover: {
             title: "Library website",
-            description: "To return to the library website, select the La Trobe University logo.",
+            description: "To return to the Library website, select the La Trobe University logo.",
             side: "bottom",
             align: "start",
             onPrevClick: function(element, step, options) {
@@ -2216,7 +2180,7 @@
             {
               element: "md-tab-content.md-active button[aria-label='Remove this search']",
               popover: {
-                title: "Remove a search",
+                title: "Remove a saved search",
                 description: "You can remove searches from your search history.",
                 side: "top",
                 align: "end",
@@ -2669,14 +2633,6 @@
               align: "center"
             }
           }, {
-            element: "prm-advanced-search md-input-container:has([translate='search-advanced.scopes.label'])",
-            popover: {
-              title: "Set the scope",
-              description: "If you want to limit your search to either physical or online resources, select that option here.",
-              side: "bottom",
-              align: "center"
-            }
-          }, {
             element: "prm-advanced-search md-select:has([translate='search-advanced.scope.option.nui.advanced.index.any']",
             popover: {
               title: "Specify a field",
@@ -2778,21 +2734,6 @@
   
 
 
-  /*
-  // add a tour button for the full view dialog
-  app.component('prmFullViewAfter', {
-    bindings: { parentCtrl: '<' },
-    controller: 'GuidedTourController',
-    template: 
-      '<style>:not(body):has(> .driver-active-element) { overflow: inherit !important; }</style>'+
-      '<a id="detail_tour_button" href="" ng-show="tourLabel" ng-click="startTour()" ng-class="{\'animate\':animateButton, \'show\':tourLabel}">'+
-        '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" style="margin: 0 5px 0 0;font-size: 1.1em;"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224 32H64C46.3 32 32 46.3 32 64v64c0 17.7 14.3 32 32 32H441.4c4.2 0 8.3-1.7 11.3-4.7l48-48c6.2-6.2 6.2-16.4 0-22.6l-48-48c-3-3-7.1-4.7-11.3-4.7H288c0-17.7-14.3-32-32-32s-32 14.3-32 32zM480 256c0-17.7-14.3-32-32-32H288V192H224v32H70.6c-4.2 0-8.3 1.7-11.3 4.7l-48 48c-6.2 6.2-6.2 16.4 0 22.6l48 48c3 3 7.1 4.7 11.3 4.7H448c17.7 0 32-14.3 32-32V256zM288 480V384H224v96c0 17.7 14.3 32 32 32s32-14.3 32-32z"></path></svg>'+
-        '<span ng-bind-html="tourLabel"></span>'+
-      '</a>'
-  });
-  */
-
-
   /* -------------------------------------------
   / Gallery collection - Author & Date
   ------------------------------------------- */
@@ -2821,4 +2762,101 @@
                 '<div class="item-author" ng-if="$ctrl.hasAuthor">{{$ctrl.author}}</div>',
       });
   // ------------------------------------------- end Gallery collection - Author & Date
+
+
+  /* -------------------------------------------
+  / Availability facet counts
+  /
+  / Adapted from: https://github.com/alliance-pcsg/ve-central-package
+  ------------------------------------------- */
+  angular
+    .module('availabilityCounts', [])
+    .component('availabilityCounts', {
+      controller: function ($scope, availabilityCountsOptions) {
+
+        var avail_group = 'tlevel';
+
+        this.$onInit = function () {
+          var parent_ctrl = $scope.$parent.$parent.$ctrl;
+          this.facet_group = parent_ctrl.facetGroup.name;
+          this.facet_results = parent_ctrl.facetService.results;
+          if (this.facet_group == avail_group) {
+            this.processFacets();
+          }
+          // copy options from local package or central package defaults
+          this.msg = availabilityCountsOptions.msg;
+        }
+
+        this.processFacets = function () {
+          var self = this;
+          if (!self.msg) self.msg = '';
+
+          angular.forEach(self.facet_results, function (result) {
+            if (result.name == avail_group) {
+              var first_value = result.values[0].value;
+              var interval = setInterval(find_facet, 100);
+              function find_facet() {
+                if (document.querySelector(self.getSelector(first_value))) {
+
+                  // Clear interval
+                  clearInterval(interval);
+
+                  // Add availability counts as spans
+                  angular.forEach(result.values, function (facet) {
+                    var selector = self.getSelector(facet.value);
+                    if (document.querySelector(selector)) {
+                      var facet_item = document.querySelector(selector);
+                      if (facet_item.querySelector('.facet-counter') == null) {
+                        var facet_text = facet_item.querySelector('.text-number-space');
+                        var span = document.createElement('span');
+                        var count = document.createTextNode(facet.count.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + (self.msg != '' ? '*' : ''));
+                        span.setAttribute('class', 'text-italic text-in-brackets text-rtl facet-counter');
+                        span.appendChild(count);
+                        facet_text.after(span);
+                      }
+                    }
+                  });
+
+                  // Facets are created and destroyed in the DOM when the group is toggled so watch for clicks
+                  var availGroup = document.querySelector(self.getSelector(avail_group));
+                  availGroup.addEventListener('click', function () {
+                    self.processFacets();
+                  });
+
+                  // Add warning text (unless it's blank)
+                  if (!availGroup.querySelector('.section-content .warning') && self.msg != '') {
+                    var warning = document.createElement('span');
+                    var warningText = document.createTextNode(self.msg);
+                    warning.setAttribute('class', 'warning');
+                    warning.appendChild(warningText);
+                    availGroup.querySelector('.section-content').appendChild(warning);
+                  }
+                }
+              }
+            }
+          });
+        }
+
+        this.getSelector = function (value) {
+          if (value == avail_group) {
+            return 'div[data-facet-group="' + avail_group + '"]';
+          }
+          else {
+            return 'div[data-facet-value="' + avail_group + '-' + value + '"]';
+          }
+        }
+
+      }
+    })
+    // Set values for options
+    .value('availabilityCountsOptions', {
+      msg: ''  // warning message (shown under facets)
+    });  
+  app.component('prmFacetExactAfter', {
+    template: '<availability-counts></availability-counts>'
+  });
+  app.requires.push('availabilityCounts');
+  // ------------------------------------------- end Availability facet counts
+
+
 })();

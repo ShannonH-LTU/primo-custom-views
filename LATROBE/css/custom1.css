@@ -729,6 +729,29 @@ prm-newspapers-search-bar > .layout-row > .layout-column {
   color: var(--ltu-dark-red);
 }
 
+/* notice (alert) shown under the header */
+.header-alert {
+  background: #ffdeab;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f8961d;
+}
+.header-alert > * {
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header-alert > :first-child {
+  margin-top: 0;
+}
+.header-alert > :last-child {
+  margin-bottom: 0;
+}
+.header-alert svg {
+  vertical-align: text-top;
+  color: #b76603;
+  margin-right: 10px;
+}
+
 .md-dialog-container.fixed-container {
   /*background: #e2231baa;*/
   background: #666a;
