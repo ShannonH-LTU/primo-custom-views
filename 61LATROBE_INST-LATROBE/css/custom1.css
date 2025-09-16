@@ -2483,6 +2483,14 @@ prm-virtual-browse [md-virtual-repeat] {
   width: 140px;
 }
 
+/* View it - Sign in alert */
+prm-full-view-service-container .section-head div[role="alert"] {
+  margin-top: 1em;
+}
+prm-full-view-service-container .section-head:has(div[role="alert"]) {
+  margin-bottom: 0;
+}
+
 /* Document Delivery form */
 prm-blank_ill .form-focus {
   box-shadow: none;
@@ -2637,6 +2645,12 @@ prm-blank_ill prm-request .md-button {
 }
 prm-blank_ill button.auto-fill-rsh-form {
   margin-bottom: 0 !important;
+}
+prm-blank_ill #form_field_doi span[translate="almaResourceSharing.autoFill"]:after {
+  content: ' using DOI';
+}
+prm-blank_ill #form_field_pmid span[translate="almaResourceSharing.autoFill"]:after {
+  content: ' using PMID';
 }
 
 prm-blank_ill .bar.success-bar {

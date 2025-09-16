@@ -2918,4 +2918,32 @@
   // ------------------------------------------- end Availability facet counts
 
 
+  /* -------------------------------------------
+  / View it - Sign in option
+  ------------------------------------------- */
+  app.component('prmServiceHeaderAfter', {
+      bindings: {
+        parentCtrl: '<'
+      },
+      controller: function ($scope, $rootScope) {
+        var $ctrl = this;
+        $ctrl.$onInit = function () {
+          $ctrl.isViewIt = $ctrl?.parentCtrl?.title == 'nui.getit.service_viewit';
+        };
+      },
+      template: 
+        '<style>'+
+          'primo-explore:has(.user-button.user-menu-button) .view-it-alert { display: none; }'+        
+          '#full-view-container:has(.view-it-alert) prm-request-services prm-alert-bar:has(prm-authentication) { display: none; }'+
+        '</style>'+
+        '<div class="view-it-alert" ng-if="!$ctrl.isSignedIn() && $ctrl.isViewIt" role="alert" layout-align="center center">'+
+          '<div layout="row" class="bar alert-bar" layout-align="center center">'+
+            '<span class="bar-text" translate="nui.viewit.signin"></span>'+
+            '<prm-authentication ng-class="{\'signed-in\': $ctrl.isSignedIn()}" [is-logged-in]="$ctrl.userName().length > 0" [idp-logout]="$ctrl.idpLogout" flex="none"></prm-authentication>'+
+          '</div>'+
+        '</div>',
+      });
+  // ------------------------------------------- end View it - Sign in option
+
+
 })();
