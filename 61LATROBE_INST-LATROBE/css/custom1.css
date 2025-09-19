@@ -2343,9 +2343,9 @@ prm-location-items .separate-list-items md-list-item:first-child {
     border-top-width: 1px;
 }
 
-prm-location-items .md-secondary-container {
+/*prm-location-items .md-secondary-container {
   display: none;
-}
+}*/
 
 prm-location-items md-list-item.md-2-line .md-list-item-text {
   line-height: 1.6em;
@@ -2356,6 +2356,15 @@ prm-location-items .item-days, prm-location-items md-list-item.md-2-line .md-lis
   font-weight: 400;
 }
 
+.__xs prm-location-items md-list md-list-item .md-list-item-text > div:last-child:has(prm-service-button) {
+  right: 0;
+  justify-content: start;
+}
+.__xs prm-location-items md-list md-list-item .md-list-item-text > div:last-child prm-service-button button {
+  margin: 0;
+}
+
+/*
 @media screen and (min-width: 600px) {
     prm-location-items md-list-item.md-2-line .md-list-item-text > div {
         width: 100%;
@@ -2366,9 +2375,13 @@ prm-location-items .item-days, prm-location-items md-list-item.md-2-line .md-lis
 }
 @media screen and (min-width: 769px) {
     prm-location-items md-list-item.md-2-line .md-list-item-text > div {
-        width: 50%;
+        width: calc(50% - 1em);
+    }
+    prm-location-items md-list-item.md-2-line .md-list-item-text > div:has(prm-service-button) {
+      width: 120px;
     }
 }
+*/
 
 /* Requests */
 prm-request .md-button {
