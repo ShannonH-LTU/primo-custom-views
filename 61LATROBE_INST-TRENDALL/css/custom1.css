@@ -1722,7 +1722,7 @@ md-card.login-dialog md-dialog-actions button.md-button {
 }
 .ltu-tour .driver-popover-navigation-btns button.driver-popover-next-btn:not(.no-icon):after {
   content: '';
-  background-image: url(https://www.latrobe.edu.au/__data/assets/git_bridge/0004/1094422/_ltu-components/dist/css/icons/feather/chevron-right.svg);
+  background-image: url(../img/chevron-right.svg);
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -1735,7 +1735,7 @@ md-card.login-dialog md-dialog-actions button.md-button {
 }
 .ltu-tour .driver-popover-navigation-btns button.driver-popover-prev-btn:not(.no-icon):before {
   content: '';
-  background-image: url(https://www.latrobe.edu.au/__data/assets/git_bridge/0004/1094422/_ltu-components/dist/css/icons/feather/chevron-left.svg);
+  background-image: url(../img/chevron-left.svg);
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -1747,7 +1747,7 @@ md-card.login-dialog md-dialog-actions button.md-button {
   margin-left: -5px;
 }
 .ltu-tour.ltu-end-tour .driver-popover-navigation-btns button.driver-popover-next-btn:not(.no-icon):after {
-  background-image: url(https://www.latrobe.edu.au/__data/assets/git_bridge/0004/1094422/_ltu-components/dist/css/icons/feather/check.svg);
+  background-image: url(../img/check.svg);
 }
 /*.ltu-tour.ltu-begin-tour .driver-popover-navigation-btns button.driver-popover-next-btn:not(.no-icon):after {
   content: none;
