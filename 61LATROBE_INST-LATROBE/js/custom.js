@@ -1122,7 +1122,7 @@
             element: ".search-elements-wrapper",
             popover: {
               title: "Search field",
-              description: "Enter the term that you want to search for.",
+              description: "<p>Enter the term that you want to search for.</p><p>Note that this will only search for databases, not their contents.</p>",
               side: "bottom",
               align: "center"
             }
@@ -2944,6 +2944,74 @@
         '</div>',
       });
   // ------------------------------------------- end View it - Sign in option
+
+
+  /* -------------------------------------------
+  / Database Home page - add content
+  ------------------------------------------- */
+  app.component('prmDatabasesAfter', {
+      bindings: {
+        parentCtrl: '<'
+      },
+      controller: function ($scope, $rootScope) {
+        var $ctrl = this;
+        $ctrl.$onInit = function () {
+          // listen for the location change event
+          $scope.$on('$locationChangeStart', function(event, next, current) {
+            //console.log('locationChangeStart - check: '+next);
+            
+            // update the DB home page notice
+            $scope.updateDBNotice(next);
+          });
+
+          requestAnimationFrame($scope.updateDBNotice);
+        };
+
+        $scope.updateDBNotice = function(url) {
+          if(!url || typeof(url) != 'string') url = window.location.href;
+
+          // get the DB home page notice element
+          var dbNotice = document.getElementById('dbHomeNotice');
+          if(!dbNotice) {
+            return;
+          }
+
+          // check if we're on the database home page
+          if(/\/dbsearch\?/.test(url) && !/query/.test(url)) {
+            // get db home page content element
+            var dbHomeContent = document.querySelector('prm-databases md-content:has(h2[translate="dbcategories.databases"])');
+            if(!dbHomeContent) {
+              // check again next repaint
+              requestAnimationFrame($scope.updateDBNotice);
+
+              return;
+            }
+
+            // move the notice if it hasn't already been moved
+            if(!dbHomeContent.contains(dbNotice)) {
+              // add dbNotice as last child of dbHomeContent
+              dbHomeContent.appendChild(dbNotice);
+            }
+          
+            // show the DB notice
+            dbNotice.style.display = 'block';
+          } else {
+            // hide the DB notice
+            dbNotice.style.display = 'none';
+          }
+        }
+      },
+      template: 
+        '<div id="dbHomeNotice" style="display:none;" layout="row" class="bar alert-bar layout-align-center-center layout-row" layout-align="center center">'+
+          '<span class="bar-text">'+
+            '<span class="icon">'+
+              '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>'+
+            '</span>'+
+            '<strong>Note:</strong> This will only search for databases, it does not search their contents.'+
+          '</span>'+
+        '</div>',
+      });
+  // ------------------------------------------- end Database Home page - add content
 
 
 })();

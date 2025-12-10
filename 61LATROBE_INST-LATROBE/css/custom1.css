@@ -795,9 +795,27 @@ prm-newspapers-search-bar > .layout-row > .layout-column {
 #virtualBrowse { order: 7; }
 .syndetic-unbound-section { order: 8; }
 .full-view-inner-container {
-padding-bottom: 10em;
-display: flex;
-flex-direction: column;
+  padding-bottom: 10em;
+  display: flex;
+  flex-direction: column;
+}
+
+prm-recomendations {
+  padding-bottom: 10em;
+}
+@media screen and (max-width: 959px) {
+  #full-view-container:has(prm-recomendations) .full-view-inner-container {
+    padding-bottom: 0em;
+  }
+  .full-view-inner-container + .full-view-aside:before {
+    content: none;
+  }
+}
+@media screen and (max-width: 599px) {
+  prm-recomendations .section-description {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .bar {
@@ -1052,6 +1070,18 @@ prm-resource-recommender md-card md-card-content {
 }
 /* --- end Resource recommender (content warning etc.) */
 
+/* --- Related reading */
+h3.recommendations-title {
+  font-family: 'dm sans';
+}
+span[translate="nui.suggestion.bx.message"] {
+  margin-right: 5px;
+}
+.recommendations-wrapper h2 {
+  text-transform: uppercase;
+}
+/* --- end Related reading */
+
 /* select drop-downs and input fields */
 md-select:not([disabled]):hover, md-select:not([disabled]):focus,
 .advanced-search-wrapper md-select:not([disabled]):hover, .advanced-search-wrapper md-select:not([disabled]):focus,
@@ -1142,6 +1172,46 @@ prm-databases .item-detail > span:has([data-field-selector="creationdate"]) + sp
     display: none;
 }
 /* --- end hide date from Databases search results */
+
+/* --- notice for database home page */
+#dbHomeNotice {
+  margin: 0 1em;
+  max-width: 42em;
+  border-top: 1px solid #c3e3e0;
+  border-bottom: 1px solid #c3e3e0;
+  background-color: #f2fbfa;
+}
+#dbHomeNotice .bar-text {
+  position: relative;
+  display: table;
+  margin: 0 auto;
+  padding-left: 35px;
+}
+#dbHomeNotice span.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+#dbHomeNotice span.icon svg {
+  color: #00aa98;
+}
+@media screen and (min-width: 1600px) {
+  #dbHomeNotice {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 959px) {
+  /* --- database categories are hidden for smaller window widths (so prevent it taking up space) */
+  prm-databases md-content:has(#dBcategorize) {
+    padding: 0 !important;
+  }
+  #dbHomeNotice {
+    max-width: 100%;
+  }
+}
 
 /* --- overriding flex layout */
 md-content > div:empty {
