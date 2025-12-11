@@ -2947,9 +2947,9 @@
 
 
   /* -------------------------------------------
-  / Database Home page - add content
+  / Custom Home page content (for Databases and Browse)
   ------------------------------------------- */
-  app.component('prmDatabasesAfter', {
+  app.component('prmExploreMainAfter', {
       bindings: {
         parentCtrl: '<'
       },
@@ -2961,14 +2961,16 @@
             //console.log('locationChangeStart - check: '+next);
             
             // update the DB home page notice
-            $scope.updateDBNotice(next);
+            $scope.updateCustomContent(next);
           });
 
-          requestAnimationFrame($scope.updateDBNotice);
+          requestAnimationFrame($scope.updateCustomContent);
         };
 
-        $scope.updateDBNotice = function(url) {
+        $scope.updateCustomContent = function(url) {
           if(!url || typeof(url) != 'string') url = window.location.href;
+
+          //console.log('updateCustomContent check - '+url);
 
           // get the DB home page notice element
           var dbNotice = document.getElementById('dbHomeNotice');
@@ -2977,12 +2979,12 @@
           }
 
           // check if we're on the database home page
-          if(/\/dbsearch\?/.test(url) && !/query/.test(url)) {
+          if(/\/dbsearch\?/.test(url) && !/browseQuery/.test(url)) {
             // get db home page content element
             var dbHomeContent = document.querySelector('prm-databases md-content:has(h2[translate="dbcategories.databases"])');
             if(!dbHomeContent) {
               // check again next repaint
-              requestAnimationFrame($scope.updateDBNotice);
+              requestAnimationFrame($scope.updateCustomContent);
 
               return;
             }
@@ -2999,6 +3001,38 @@
             // hide the DB notice
             dbNotice.style.display = 'none';
           }
+          
+          // get the Browse home page content element
+          var browseContent = document.getElementById('browseHomeContent');
+          if(!browseContent) {
+            return;
+          }
+          
+          // check if we're on the 'browse' home page
+          if(/\/browse\?/.test(url) && !/browseQuery/.test(url)) {
+            // insert browseContent before the 'prm-browse-search-after' element
+            var afterElem = document.querySelector('prm-browse-search-after');
+            if(!afterElem) {
+              // check again next repaint
+              requestAnimationFrame($scope.updateCustomContent);
+
+              return;
+            }
+            /* 
+            // move the browseContent if it hasn't already been moved
+            // Note: Now leaving the browse content where it is (so it will be shown again if performing a blank browse search)
+            if(afterElem.parentNode && !afterElem.parentNode.contains(browseContent)) {
+              afterElem.parentNode.insertBefore(browseContent, afterElem);
+            }
+            */
+            // show the content
+            browseContent.style.display = 'block';
+          } else {
+            console.log('check - hiding browse content');
+            // hide the content
+            browseContent.style.display = 'none';
+          }
+          
         }
       },
       template: 
@@ -3009,9 +3043,17 @@
             '</span>'+
             '<strong>Note:</strong> This will only search for databases, it does not search their contents.'+
           '</span>'+
-        '</div>',
+        '</div>'+
+        '<md-content id="browseHomeContent" style="display:none;" class="_md md-primoExplore-theme layout-align-center-start layout-row flex">'+
+          '<div class="layout-xs-column layout-sm-column layout-align-center-center layout-column flex">'+
+            '<div class="padding-large">'+
+              '<h2>Browse the collections</h2>'+
+              '<p>Search for resources with similar titles or authors, explore materials on related subjects or search by call number to see items that would normally appear on the shelf next to the number you specify.</p>'+
+            '</div>'+
+          '</div>'+
+        '</md-content>'
       });
-  // ------------------------------------------- end Database Home page - add content
+  // ------------------------------------------- end Custom Home page content
 
 
 })();

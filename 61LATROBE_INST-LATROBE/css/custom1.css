@@ -932,6 +932,22 @@ prm-search-result-list .mobile-actions > :not(button) {
   opacity: 1;
 }
 
+/* --- Browse home page */
+prm-browse-search {
+  max-width: 1400px;
+  display: block;
+  margin: 0 auto;
+  padding: 16px;
+}
+prm-browse-search md-content:has(.flex > div[aria-hidden="true"]):not(md-content:has(md-list)) {
+  padding: 0;
+}
+prm-explore-main-after #browseHomeContent {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 16px 16px;
+}
+
 /* --- Browse results page */
 prm-browse-search md-list.prm-list.prm-linkable-list-items md-list-item > .md-button {
   margin: 0 60px 4px 4px;
@@ -957,6 +973,17 @@ prm-browse-search-bar .classic-input md-input-container {
 }
 prm-browse-search-bar .clear-button {
   right: 70px;
+}
+@media screen and (min-width: 1500px) {
+    prm-browse-search prm-page-nav-menu {
+        position: absolute;
+        bottom: 2em;
+        right: 0;
+    }
+    prm-browse-search .facet-to-left prm-page-nav-menu #speedDialWidget {
+        position: absolute;
+        bottom: 0;
+    }
 }
 /* --- end Browse results page */
 
