@@ -169,11 +169,17 @@ md-card.default-card, prm-featured-result-item md-card {
   margin-left: auto;
   margin-right: auto;
 }
-.header-alert > :first-child {
+.header-alert .alert-text {
+  display: table;
+}
+.header-alert > :first-child, .header-alert > :first-child > :first-child {
   margin-top: 0;
 }
-.header-alert > :last-child {
+.header-alert > :last-child, .header-alert > :last-child > :last-child {
   margin-bottom: 0;
+}
+.header-alert a {
+  --ltu-link-color: #cb1f18;
 }
 
 /* cards */
