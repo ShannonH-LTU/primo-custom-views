@@ -171,6 +171,7 @@ md-card.default-card, prm-featured-result-item md-card {
 }
 .header-alert .alert-text {
   display: table;
+  direction: ltr;
 }
 .header-alert > :first-child, .header-alert > :first-child > :first-child {
   margin-top: 0;
@@ -548,6 +549,15 @@ prm-advanced-search .advanced-search-output .md-button.button-confirm
   margin-right: -2px !important;
   color: var(--ltu-white);
   position: relative;
+}
+[dir="rtl"] prm-search-bar .simple-search-wrapper .search-actions .md-button,
+[dir="rtl"] prm-atoz-search-bar .simple-search-wrapper .md-button.submit-button,
+[dir="rtl"] prm-newspapers-search-bar .classic-input .md-button.submit-button,
+[dir="rtl"] prm-tags-search-bar .classic-input .md-button.submit-button,
+[dir="rtl"] prm-browse-search-bar .classic-input .md-button.submit-button,
+[dir="rtl"] prm-advanced-search .advanced-search-output .md-button.button-confirm {
+  margin-left: -2px !important;
+  margin-right: 8px !important;
 }
 prm-search-bar .simple-search-wrapper .search-actions .md-button:hover, prm-search-bar .simple-search-wrapper .search-actions .md-button:focus,
 prm-atoz-search-bar .simple-search-wrapper .md-button.submit-button:hover, prm-atoz-search-bar .simple-search-wrapper .md-button.submit-button:focus,
@@ -1257,6 +1267,9 @@ md-content > div:empty {
 prm-static {
   max-width: 1400px;
 }
+prm-static md-card {
+  direction: ltr;
+}
 prm-newspapers-home {
   max-width: 1400px;
   display: block;
@@ -1924,6 +1937,10 @@ prm-topbar-after:has(#tour_button) {
   background: var(--ltu-dark-red);
   box-shadow: 2px 2px 4px rgba(0,0,0,.3);
   transition: box-shadow .3s ease-in-out;
+}
+[dir="rtl"] #tour_button svg {
+  margin-left: 5px !important;
+  margin-right: 0 !important;
 }
 
 #tour_button.featured-collection {
